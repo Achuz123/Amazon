@@ -1,33 +1,31 @@
 let HTML = "";
-product.forEach((product) => {
-  HTML += ` <div class="products-grid"> <div class="product-container">
+products.forEach((products) => {
+  HTML += ` <div class="product-container">
           <div class="product-image-container">
             <img
               class="product-image"
-              src="${product.image}"
+              src=${products.image}
             />
           </div>
 
           <div class="product-name limit-text-to-2-lines">
-            ${product.name}
+            ${products.name}
           </div>
 
           <div class="product-rating-container">
             <img
               class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10}.png"
+              src="images/ratings/rating-${products.rating.stars * 10}.png"
             />
             <div class="product-rating-count link-primary">${
-              product.rating.count
+              products.rating.count
             }</div>
           </div>
 
-          <div class="product-price">$${(product.priceCents / 100).toFixed(
-            2
-          )}</div>
+          <div class="product-price">$${products.priceCents / 100}</div>
 
           <div class="product-quantity-container">
-            <select>
+            <select >
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -39,7 +37,42 @@ product.forEach((product) => {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-          </div></div>`;
+          </div>
 
-  document.querySelector(".products-grid").innerHTML = HTML;
+          <div class="product-spacer"></div>
+
+          <div class="added-to-cart">
+            <img src="images/icons/checkmark.png" />
+            Added
+          </div>
+
+          <button class="add-to-cart-button button-primary js-button" data-product=${
+            products.id
+          }>Add to Cart</button>
+        </div>`;
+
+  document.querySelector(".js-product-grid").innerHTML = HTML;
+});
+
+document.querySelectorAll(".js-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const name = button.dataset.product;
+    let find;
+    cart.forEach((item) => {
+      if (item.product === name) {
+        find = item;
+      }
+    });
+
+    if (find) {
+      find.quantity++;
+    } else {
+      cart.push({
+        product: name,
+        quantity: 1,
+      });
+    }
+
+    console.log(cart);
+  });
 });
