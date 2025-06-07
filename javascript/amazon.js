@@ -1,3 +1,5 @@
+import { products } from "../data/products.js";
+import { cart, AddtoCart } from "../data/cart.js";
 let HTML = "";
 products.forEach((products) => {
   HTML += ` <div class="product-container">
@@ -54,25 +56,22 @@ products.forEach((products) => {
   document.querySelector(".js-product-grid").innerHTML = HTML;
 });
 
+var length = 0;
 document.querySelectorAll(".js-button").forEach((button) => {
   button.addEventListener("click", () => {
     const name = button.dataset.product;
-    let find;
-    cart.forEach((item) => {
-      if (item.product === name) {
-        find = item;
-      }
-    });
 
-    if (find) {
-      find.quantity++;
-    } else {
-      cart.push({
-        product: name,
-        quantity: 1,
-      });
-    }
-
-    console.log(cart);
+    AddtoCart(name);
+    Updatequan();
   });
 });
+
+function Updatequan() {
+  let quan = 0;
+  cart.forEach((item) => {
+    quan += item.quantity;
+  });
+  console.log(cart);
+
+  document.querySelector(".js-number").innerHTML = quan;
+}
