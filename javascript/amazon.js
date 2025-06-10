@@ -1,5 +1,6 @@
 import { products } from "../data/products.js";
 import { cart, AddtoCart } from "../data/cart.js";
+import { formatcurr } from "../javascript/util/money.js";
 let HTML = "";
 products.forEach((products) => {
   HTML += ` <div class="product-container">
@@ -24,7 +25,7 @@ products.forEach((products) => {
             }</div>
           </div>
 
-          <div class="product-price">$${products.priceCents / 100}</div>
+          <div class="product-price">$${formatcurr(products.priceCents)}</div>
 
           <div class="product-quantity-container">
             <select >

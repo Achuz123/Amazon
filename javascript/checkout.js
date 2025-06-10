@@ -1,8 +1,8 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
-
+import { formatcurr } from "../javascript/util/money.js";
 let HTML;
-
+let i = 0;
 cart.forEach((item) => {
   let match;
 
@@ -26,11 +26,13 @@ cart.forEach((item) => {
                   ${match.name}
                 </div>
                 <div class="product-price">
-                  $${match.priceCents}
+                  $${formatcurr(match.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
-                    Quantity: <span class="quantity-label">${item.quantity}</span>
+                    Quantity: <span class="quantity-label">${
+                      item.quantity
+                    }</span>
                   </span>
                   <span class="update-quantity-link link-primary">
                     Update
@@ -48,7 +50,7 @@ cart.forEach((item) => {
                 <div class="delivery-option">
                   <input type="radio" checked
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-1${i}">
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -61,7 +63,7 @@ cart.forEach((item) => {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-1${i}">
                   <div>
                     <div class="delivery-option-date">
                       Wednesday, June 15
@@ -74,7 +76,7 @@ cart.forEach((item) => {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-1${i}">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13
@@ -87,6 +89,8 @@ cart.forEach((item) => {
               </div>
             </div>
           </div>`;
-});
 
+  i++;
+});
+console.log(HTML);
 document.querySelector(".js-order").innerHTML = HTML;

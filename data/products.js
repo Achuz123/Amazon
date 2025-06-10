@@ -29,7 +29,7 @@ export const products = [
       stars: 4.5,
       count: 56,
     },
-    priceCents: 799,
+    priceCents: 7950,
     keywords: ["tshirts", "apparel", "mens"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
