@@ -125,6 +125,7 @@ export function rendersummary() {
 
       cartdelupdate(prodID, delID);
       rendersummary();
+      price();
     });
   });
 }
