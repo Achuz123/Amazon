@@ -5,10 +5,12 @@ if (!cart) {
     {
       product: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
       quantity: 5,
+      id: "3",
     },
     {
       product: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
       quantity: 4,
+      id: "1",
     },
   ];
 }
@@ -27,6 +29,7 @@ export function AddtoCart(name) {
     cart.push({
       product: name,
       quantity: 1,
+      id: "1",
     });
 
     //console.log(cart);
