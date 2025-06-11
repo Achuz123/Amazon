@@ -51,3 +51,16 @@ export function removeCart(item) {
 function localSave() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+export function cartdelupdate(product, deliveryoption) {
+  let find;
+  cart.forEach((item) => {
+    if (item.product === product) {
+      find = item;
+    }
+  });
+
+  find.id = deliveryoption;
+
+  localSave();
+}
