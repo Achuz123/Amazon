@@ -15,3 +15,12 @@ export const delivery = [
     price: "999",
   },
 ];
+
+export function deliverymatch(cartID) {
+  let item;
+  delivery.forEach((Delitem) => {
+    if (Delitem.id == cartID) item = Delitem;
+  });
+
+  return item;
+}

@@ -1,3 +1,12 @@
+export function findmatch(cartitem) {
+  let item;
+  products.forEach((proditem) => {
+    if (proditem.id == cartitem.product) item = proditem;
+  });
+
+  return item;
+}
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
