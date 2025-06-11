@@ -1,13 +1,18 @@
-export let cart = [
-  {
-    product: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-    quantity: 5,
-  },
-  {
-    product: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
-    quantity: 4,
-  },
-];
+export let cart = JSON.parse(localStorage.getItem("cart"));
+
+if (!cart) {
+  cart = [
+    {
+      product: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+      quantity: 5,
+    },
+    {
+      product: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
+      quantity: 4,
+    },
+  ];
+}
+
 export function AddtoCart(name) {
   let find;
   cart.forEach((item) => {
@@ -24,8 +29,9 @@ export function AddtoCart(name) {
       quantity: 1,
     });
 
-    console.log(cart);
+    //console.log(cart);
   }
+  localSave();
 }
 
 export function removeCart(item) {
@@ -36,4 +42,9 @@ export function removeCart(item) {
   });
 
   cart = newc;
+  localSave();
+}
+
+function localSave() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }

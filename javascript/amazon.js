@@ -2,6 +2,7 @@ import { products } from "../data/products.js";
 import { cart, AddtoCart } from "../data/cart.js";
 import { formatcurr } from "../javascript/util/money.js";
 let HTML = "";
+
 products.forEach((products) => {
   HTML += ` <div class="product-container">
           <div class="product-image-container">
@@ -57,18 +58,16 @@ products.forEach((products) => {
   document.querySelector(".js-product-grid").innerHTML = HTML;
 });
 
-var length = 0;
 document.querySelectorAll(".js-button").forEach((button) => {
   button.addEventListener("click", () => {
     const name = button.dataset.product;
-
+    let quan = 0;
     AddtoCart(name);
-    Updatequan();
+    Updatequan(quan);
   });
 });
 
-function Updatequan() {
-  let quan = 0;
+function Updatequan(quan) {
   cart.forEach((item) => {
     quan += item.quantity;
   });
