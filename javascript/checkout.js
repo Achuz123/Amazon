@@ -4,31 +4,32 @@ import { formatcurr } from "../javascript/util/money.js";
 import { delivery } from "../data/delivery.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 
-let HTML = "";
-let i = 0;
+function rendersummary() {
+  let HTML = "";
+  let i = 0;
 
-cart.forEach((item) => {
-  let match;
+  cart.forEach((item) => {
+    let match;
 
-  products.forEach((product) => {
-    if (product.id == item.product) {
-      match = product;
-    }
-  });
+    products.forEach((product) => {
+      if (product.id == item.product) {
+        match = product;
+      }
+    });
 
-  const deliveryoption = item.id;
-  let deloption;
+    const deliveryoption = item.id;
+    let deloption;
 
-  delivery.forEach((delitem) => {
-    if (delitem.id == deliveryoption) {
-      deloption = delitem;
-    }
-  });
-  const dat = dayjs();
-  const del = dat.add(deloption.days, "days");
-  const formatted = del.format("dddd,MMMM D");
+    delivery.forEach((delitem) => {
+      if (delitem.id == deliveryoption) {
+        deloption = delitem;
+      }
+    });
+    const dat = dayjs();
+    const del = dat.add(deloption.days, "days");
+    const formatted = del.format("dddd,MMMM D");
 
-  HTML += `<div class="cart-item-container cart-item-container-${match.id}">
+    HTML += `<div class="cart-item-container cart-item-container-${match.id}">
             <div class="delivery-date">
               Delivery date: ${formatted}
             </div>
@@ -72,34 +73,35 @@ cart.forEach((item) => {
             </div>
           </div>`;
 
-  i++;
-});
-
-//console.log(HTML);
-document.querySelector(".js-order").innerHTML = HTML;
-
-document.querySelectorAll(".js-delete").forEach((link) => {
-  link.addEventListener("click", () => {
-    removeCart(link.dataset.product);
-
-    document
-      .querySelector(`.cart-item-container-${link.dataset.product}`)
-      .remove();
+    i++;
   });
-});
 
-function deliveryUpdate(i, item, productID) {
-  let html = "";
-  delivery.forEach((deliverys) => {
-    const dat = dayjs();
+  //console.log(HTML);
+  document.querySelector(".js-order").innerHTML = HTML;
 
-    const del = dat.add(deliverys.days, "days");
+  document.querySelectorAll(".js-delete").forEach((link) => {
+    link.addEventListener("click", () => {
+      removeCart(link.dataset.product);
 
-    const formatted = del.format("dddd,MMMM D");
+      document
+        .querySelector(`.cart-item-container-${link.dataset.product}`)
+        .remove();
+    });
+  });
 
-    const text = deliverys.id == 1 ? "FREE" : `${formatcurr(deliverys.price)}`;
-    const chck = deliverys.id === item.id ? "checked" : "";
-    html += `
+  function deliveryUpdate(i, item, productID) {
+    let html = "";
+    delivery.forEach((deliverys) => {
+      const dat = dayjs();
+
+      const del = dat.add(deliverys.days, "days");
+
+      const formatted = del.format("dddd,MMMM D");
+
+      const text =
+        deliverys.id == 1 ? "FREE" : `${formatcurr(deliverys.price)}`;
+      const chck = deliverys.id === item.id ? "checked" : "";
+      html += `
                 <div class="delivery-option js-selection-value"data-product-id="${productID}" data-delivery-option="${deliverys.id}">
                   <input type="radio" ${chck}
                     class="delivery-option-input"
@@ -114,16 +116,19 @@ function deliveryUpdate(i, item, productID) {
                   </div>
                 </div>                
                `;
-  });
+    });
 
-  return html;
+    return html;
+  }
+
+  document.querySelectorAll(".js-selection-value").forEach((item) => {
+    item.addEventListener("click", () => {
+      const delID = item.dataset.deliveryOption;
+      const prodID = item.dataset.productId;
+
+      cartdelupdate(prodID, delID);
+      rendersummary();
+    });
+  });
 }
-
-document.querySelectorAll(".js-selection-value").forEach((item) => {
-  item.addEventListener("click", () => {
-    const delID = item.dataset.deliveryOption;
-    const prodID = item.dataset.productId;
-
-    cartdelupdate(prodID, delID);
-  });
-});
+rendersummary();
