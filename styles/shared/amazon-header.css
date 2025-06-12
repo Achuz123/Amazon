@@ -1,5 +1,5 @@
 /* Header Container */
-.amazon-header {
+.peedika-header {
   background-color: #ffffff;
   color: #1c43aa; /* Primary color for text */
   padding: 0 20px;
@@ -17,7 +17,7 @@
 }
 
 /* Left Section */
-.amazon-header-left-section {
+.peedika-header-left-section {
   width: 200px;
   display: flex;
   align-items: center;
@@ -43,22 +43,22 @@
 }
 
 /* Logo Styles */
-.amazon-logo {
+.peedika-logo {
   width: 120px;
   transition: transform 0.3s ease;
 }
 
-.amazon-logo:hover {
+.peedika-logo:hover {
   transform: scale(1.05);
 }
 
-.amazon-mobile-logo {
+.peedika-mobile-logo {
   display: none;
   height: 40px;
 }
 
 /* Middle Section - Search */
-.amazon-header-middle-section {
+.peedika-header-middle-section {
   flex: 1;
   max-width: 600px;
   margin: 0 30px;
@@ -102,7 +102,7 @@
 }
 
 /* Right Section */
-.amazon-header-right-section {
+.peedika-header-right-section {
   width: 220px;
   flex-shrink: 0;
   display: flex;
@@ -189,19 +189,19 @@
 
 /* Responsive Styles */
 @media (max-width: 800px) {
-  .amazon-header-left-section {
+  .peedika-header-left-section {
     width: unset;
   }
-  .amazon-header-middle-section {
+  .peedika-header-middle-section {
     margin: 0 15px;
   }
 }
 
 @media (max-width: 575px) {
-  .amazon-logo {
+  .peedika-logo {
     display: none;
   }
-  .amazon-mobile-logo {
+  .peedika-mobile-logo {
     display: block;
   }
   .returns-text {
