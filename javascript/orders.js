@@ -21,7 +21,8 @@ export function renderorders() {
               <div class="order-header-label">Order ID:</div>
               <div>${orderitem.orderID}</div>
             </div>
-          </div>`;
+          </div>
+          <div class="order-details-grid">`;
     let name = "";
     let arrival = "";
     let quantity = "";
@@ -39,7 +40,7 @@ export function renderorders() {
       //console.log(quantity);
       //console.log(image);
 
-      html += `<div class="order-details-grid">
+      html += `
             <div class="product-image-container">
               <img src="${image}" />
             </div>
@@ -65,10 +66,12 @@ export function renderorders() {
             </div>
 
             
-          </div>
-        </div>`;
+          
+        `;
     });
+    html += `</div></div></div>`;
   });
+
   document.querySelector(".js-ordergen").innerHTML = html;
 }
 renderorders();

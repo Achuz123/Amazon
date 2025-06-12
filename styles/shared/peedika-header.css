@@ -1,7 +1,7 @@
 /* Header Container */
 .peedika-header {
-  background-color: #ffffff;
-  color: #1c43aa; /* Primary color for text */
+  background-color: #d08280;
+  color: #640303; /* Primary color for text */
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -75,6 +75,222 @@
   border-radius: 25px 0 0 25px;
   outline: none;
   transition: all 0.3s ease;
+}
+/* Header Container */
+.peedika-header {
+  background-color: #ffffff;
+  color: #4d79f6;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  box-shadow: 0 2px 10px rgba(77, 121, 246, 0.1);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(77, 201, 246, 0.2);
+}
+
+/* Left Section */
+.peedika-header-left-section {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.header-link {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  background-color: rgba(77, 201, 246, 0.1);
+  margin-right: 5px;
+  color: #4d79f6;
+}
+
+.header-link:hover {
+  border: 1px solid #4dc9f6;
+  background-color: rgba(77, 201, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Logo Styles */
+.peedika-logo {
+  width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.peedika-logo:hover {
+  transform: scale(1.05);
+}
+
+.peedika-mobile-logo {
+  display: none;
+  height: 40px;
+}
+
+/* Middle Section - Search */
+.peedika-header-middle-section {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 30px;
+  display: flex;
+}
+
+.search-bar {
+  flex: 1;
+  width: 0;
+  font-size: 14px;
+  height: 45px;
+  padding-left: 20px;
+  border: 2px solid rgba(77, 201, 246, 0.3);
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #4dc9f6;
+  box-shadow: 0 0 0 3px rgba(77, 201, 246, 0.3);
+}
+
+.search-button {
+  background-color: #4dc9f6;
+  border: none;
+  width: 50px;
+  height: 49px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #4d79f6;
+}
+
+.search-icon {
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+/* Right Section */
+.peedika-header-right-section {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.orders-link {
+  color: #4d79f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.orders-link:hover {
+  background-color: rgba(77, 201, 246, 0.1);
+}
+
+.returns-text {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(77, 121, 246, 0.7);
+}
+
+.orders-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Cart Styles */
+.cart-link {
+  color: #4d79f6;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cart-link:hover {
+  background-color: rgba(77, 201, 246, 0.1);
+}
+
+.cart-icon {
+  width: 30px;
+  transition: transform 0.3s ease;
+}
+
+.cart-link:hover .cart-icon {
+  transform: scale(1.1);
+}
+
+.cart-text {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.cart-quantity {
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffa647;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.cart-link:hover .cart-quantity {
+  transform: scale(1.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+  .peedika-header-left-section {
+    width: unset;
+  }
+  .peedika-header-middle-section {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .peedika-logo {
+    display: none;
+  }
+  .peedika-mobile-logo {
+    display: block;
+  }
+  .returns-text {
+    display: none;
+  }
+  .orders-text {
+    font-size: 12px;
+  }
+  .cart-text {
+    display: none;
+  }
 }
 
 .search-bar:focus {
