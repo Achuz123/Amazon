@@ -48,7 +48,7 @@ export function removeCart(item) {
   localSave();
 }
 
-function localSave() {
+export function localSave() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
