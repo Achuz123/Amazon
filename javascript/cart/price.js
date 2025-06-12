@@ -253,7 +253,7 @@ function showOrderConfirmation(orderId, itemmoney, deliverymoney) {
       Looks like you haven't added anything to your cart yet.
     </p>
     <a
-      href="\amazon.html"
+      href="\peedika.html"
       style="display: inline-block; margin-top: 30px; padding: 12px 25px; font-size: 16px; background-color: #0099ff; color: white; text-decoration: none; border-radius: 5px;"
     >
       Start Shopping
